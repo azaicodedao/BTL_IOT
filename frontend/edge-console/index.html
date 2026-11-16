@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bảng điều khiển server biên</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <!-- Bảng điều khiển thiết bị của server biên. Không cần build: 1 tệp HTML + app.js + app.css, phục vụ bởi FastAPI. -->
+  <main id="login" hidden>
+    <form id="login-form" class="card login">
+      <h1>Server biên</h1>
+      <p class="muted">Quản lý thiết bị IoT của phòng học</p>
+      <label for="password">Mật khẩu quản trị biên</label>
+      <input id="password" type="password" autocomplete="current-password" required autofocus>
+      <button class="primary">Đăng nhập</button>
+      <p id="login-error" class="error" role="alert"></p>
+    </form>
+  </main>
+
+  <div id="app" hidden>
+    <header>
+      <div>
+        <h1 id="edge-name">Server biên</h1>
+        <p id="edge-sub" class="muted"></p>
+      </div>
+      <button id="logout" class="ghost">Đăng xuất</button>
+    </header>
+
+    <section id="health" class="health" aria-label="Tình trạng hệ thống"></section>
+    <p id="banner" class="error" role="alert" hidden></p>
+
+    <section class="card" aria-label="Lưu tạm và đồng bộ trung tâm">
+      <h2>Đồng bộ với server trung tâm</h2>
+      <p id="sync-summary" role="status"></p>
+      <p id="sync-detail" class="muted"></p>
+      <p id="sync-error" class="error" role="alert" hidden></p>
+      <button id="sync-retry">Thử đồng bộ lại</button>
+    </section>
+
+    <section class="card">
+      <h2>Camera điện thoại / camera mạng</h2>
+      <p class="muted">Bật phát video trên điện thoại, nhập URL video bên dưới. Camera sẽ tự xuất hiện trong mục chờ đăng ký để duyệt và gán phòng.</p>
+      <form id="camera-source-form" class="row">
+        <div><label for="source-name">Tên gợi nhớ</label><input id="source-name" required maxlength="80" placeholder="Camera giám sát phòng"></div>
+        <div><label for="source-url">URL video (HTTP / HTTPS / RTSP)</label><input id="source-url" required maxlength="2048" placeholder="URL video hiển thị trên điện thoại"></div>
+        <button class="primary" type="submit">Thêm camera</button>
+      </form>
+      <p id="source-message" role="status"></p>
+      <div id="camera-sources"></div>
+    </section>
+
+    <section class="card">
+      <h2>Thiết bị chờ đăng ký <span id="pending-count" class="count"></span></h2>
+      <p class="muted">Thiết bị mới cắm nguồn và vào Wi-Fi sẽ tự xuất hiện ở đây. Đối chiếu <b>mã ghép</b> với mã hiện trên
+        thiết bị (LCD / Serial) rồi bấm Đăng ký. Không cần nạp firmware hay nhập khoá.</p>
+      <div id="enrollments"></div>
+    </section>
+
+    <section class="card">
+      <h2>Thiết bị <span id="device-count" class="count"></span></h2>
+      <div id="devices"></div>
+    </section>
+
+    <section class="card">
+      <h2>Ca thi đang diễn ra tại các phòng của server này</h2>
+      <div id="exams"></div>
+    </section>
+
+    <section class="card">
+      <details id="audit-box">
+        <summary>Nhật ký thao tác tại biên</summary>
+        <div id="audit"></div>
+      </details>
+    </section>
+  </div>
+
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head">
+      <h2 id="dialog-title"></h2>
+      <button id="dialog-close" class="ghost" aria-label="Đóng">✕</button>
+    </div>
+    <div id="dialog-body"></div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
