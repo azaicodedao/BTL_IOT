@@ -1,0 +1,10 @@
+# Server trung tâm: không cần thư viện AI, MQTT hay xử lý ảnh
+fastapi==0.115.3
+uvicorn[standard]==0.35.0
+SQLAlchemy>=2.0,<2.2
+psycopg2-binary==2.9.10
+pydantic-settings>=2.6
+python-jose==3.5.0
+bcrypt>=4.2
+qdrant-client==1.7.3
+numpy>=1.26

@@ -1,0 +1,26 @@
+# Hạ tầng của SERVER TRUNG TÂM: PostgreSQL (nghiệp vụ) + Qdrant (vector khuôn mặt)
+#   cd deployment/central && docker compose up -d
+# Giữ nguyên tên volume/cổng của bản cũ (deploy/docker-compose.yml) để dùng tiếp dữ liệu đã có.
+name: deploy
+services:
+  postgres:
+    image: postgres:16.4-alpine
+    container_name: classroom-db
+    environment:
+      POSTGRES_USER: classroom
+      POSTGRES_PASSWORD: classroom
+      POSTGRES_DB: classroom
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:v1.7.4
+    container_name: classroom-qdrant
+    ports: ["6333:6333"]
+    volumes: [qdrant:/qdrant/storage]
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  qdrant:

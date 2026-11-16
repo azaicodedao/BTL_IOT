@@ -1,0 +1,17 @@
+# Server biên: API + MQTT + AI tại chỗ
+fastapi==0.115.3
+uvicorn[standard]==0.35.0
+SQLAlchemy>=2.0,<2.2
+pydantic-settings>=2.6
+python-jose==3.5.0
+python-multipart>=0.0.13
+paho-mqtt==2.1.0
+requests>=2.32
+websockets>=13
+zeroconf>=0.132          # mDNS: thiết bị tự tìm server biên
+numpy>=1.26
+opencv-python>=4.10
+# AI (worker + đăng ký khuôn mặt). YOLO chạy GPU nếu cài PyTorch bản CUDA.
+insightface==0.7.3
+onnxruntime>=1.18
+ultralytics>=8.3

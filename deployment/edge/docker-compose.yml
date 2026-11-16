@@ -1,0 +1,12 @@
+# Hạ tầng của SERVER BIÊN: chỉ cần MQTT broker (CSDL của biên là SQLite, không cần container)
+#   cd deployment/edge && python init_mqtt.py && docker compose up -d
+name: edge
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0.20
+    container_name: classroom-mqtt
+    ports: ["1883:1883"]
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+    restart: unless-stopped

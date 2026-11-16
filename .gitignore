@@ -1,0 +1,29 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.test-tmp/
+.env
+logs/
+
+# Frontend
+frontend/dashboard/node_modules/
+frontend/dashboard/dist/
+
+# Server biên: dữ liệu cục bộ, ảnh (nhạy cảm), trạng thái broker
+backend/edge/data/
+backend/edge/storage/
+deployment/edge/mosquitto/data/
+
+# Bản cũ: khoá thiết bị chép tay (không còn dùng) + dữ liệu thử
+firmware_secrets/
+legacy/students/
+legacy/storage_v2/
+legacy/*.jpg
+*.npy
+*.db-wal
+*.db-shm
+.claude/
+.claude/skills
+HUONG_DAN_CHAY.md
+*docx
