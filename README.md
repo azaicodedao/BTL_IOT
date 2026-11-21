@@ -57,6 +57,9 @@ docs/               Kiến trúc, giao thức và biên bản kiểm tra
 legacy/             Mã cũ chỉ giữ để tham khảo
 ```
 
+Tài liệu phân tích và thiết kế, gồm sơ đồ bối cảnh, use case, kiến trúc tổng thể và kiến trúc phân lớp, xem tại
+[`docs/PHAN_TICH_THIET_KE.md`](docs/PHAN_TICH_THIET_KE.md).
+
 ## Chạy nhanh
 
 Sao chép `.env.example` thành `.env` ở thư mục gốc và thay các giá trị mẫu trước khi chạy.
